@@ -7,12 +7,23 @@ from Convert_Numbers_to_Japanese import *
 
 # 生成100个随机数
 random_numbers = [random.randint(1, 100) for _ in range(100)]
+# 保存转化后的字符
+dic ={
+    'number': 0,
+    "kanji": ''
+    "hiragana": '',
+    "romaji": '',
+}
+# 保存转化后的随机数
+out_text =[]
 # 转化数字为平假名、罗马字符、汉字
-number = 12
-hiragana_number = Convert(number,'all')
-print(hiragana_number)
-
-
+for number in random_numbers:
+    dic['number']=number
+    dic['romaji'] = Convert(number,'romaji')
+    dic['hiragana'] = Convert(number,'hiragana')
+    dic['kanji'] = Convert(number,'kanji')
+    out_text.append(dic)
+    
 # 创建PDF文档
 pdf = FPDF()
 pdf.set_auto_page_break(auto=True, margin=15)
